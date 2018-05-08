@@ -1,0 +1,132 @@
+--parseApothecaryRecipes.lua
+
+os.loadAPI("/disk/henryLib");
+
+local c = colors
+
+local colorArray = {c.white, c.orange, c.magenta, c.lightBlue, c.yellow, c.lime, c.pink, c.gray, c.lightGray, c.cyan, c.purple, c.blue, c.brown, c.green, c.red, c.black}
+local colorStringArr = {"White","Orange","Magenta","Light Blue","Yellow","Lime","Pink","Gray","Light Gray","Cyan","Purple","Blue","Brown","Green","Red","Black"}
+local colorDict = {}
+
+for item = 1, #colorArray do
+  colorDict[colorStringArr[item]] = colorArray[item] --cd["White"] = colors.white, etc...
+end
+
+hfbp = henryLib
+
+
+function parse_recipe_file(rawFile)
+  
+  -- print("hey henry, please fix the [ 1234] bug...please...fiiiix plsszszs")
+  -- sleep(1)
+  
+  local rawString = hfbp.readFile(rawFile)--just an ugly string, \n and whitespace, etc...
+  
+  local stringArrCR = hfbp.splitString(rawString,"\n") --separated by "\n"
+        stringArrCR = hfbp.remove_items(stringArrCR,"") --now we have a proper list...
+        
+  local parsedRecipes = {}
+  
+  
+  for data = 1, #stringArrCR do --loop through all single, unparsed recipes
+    local singleRecipe = {}
+    local ourString = stringArrCR[data]
+    
+--    sleep(1)
+--    print("processing "..ourString)
+--    sleep(1)
+     
+    singleRecipe = hfbp.splitString(ourString,">") -- read in the > sign
+    singleRecipe = hfbp.flattenStringArray(singleRecipe,",") --flatten so we can take in commas
+    singleRecipe = hfbp.splitString(singleRecipe,",") --read in commas if any
+    
+    --handle pos 1, aka the output
+    singleRecipe[1] = {hfbp.strip_whitespace(singleRecipe[1]),1}
+    
+    for item = 2, #singleRecipe do --handle the recipe ingredients
+      local tempRecipe = {}
+      singleRecipe[item] = hfbp.strip_whitespace(singleRecipe[item]) --to split across remaining space, i.e. "[1] AssPetal" is output
+      tempRecipe = hfbp.splitString(singleRecipe[item],"]") --remove the rbracket
+      
+    
+      tempRecipe[2] = hfbp.strip_whitespace(tempRecipe[2]) --remove whitespace
+      
+      tempRecipe[1] = string.sub(tempRecipe[1],2,#tempRecipe) --remove lbracket
+      
+      tempRecipe[1] = tonumber(tempRecipe[1])
+      
+      singleRecipe[item] = tempRecipe --apply le changes
+      
+    end
+    
+    table.insert(singleRecipe,{1,"Seeds"}) --so we gots us some dank seeds...
+    
+    table.insert(parsedRecipes,singleRecipe) --insert our pretty recipeArr into our recipeList
+    
+--    sleep(1)
+--    print(textutils.serialize(singleRecipe))
+--    sleep(1)
+    end
+  
+  --print("about to write file to "..outputFile)
+  return parsedRecipes
+end
+  
+function write_recipe_file(parsedFile, path)
+  hfbp.writeFile(path,textutils.serialize(parsedFile))
+end
+  
+function read_recipe_file(path)
+  return textutils.unserialize(hfbp.readFile(path))
+end
+
+function parse_ingredients_file(rawFile)
+  local rawString = hfbp.readFile(rawFile)
+  
+  local stringArrCR = hfbp.splitString(rawString,"\n")
+  local stringArrCR = hfbp.remove_items(stringArrCR,"")
+  local parsedIngredients = {}
+  
+  for data = 1, #stringArrCR do --loop through lines of ingredients file
+    
+    local singleRecipe = {}
+    local ourString = stringArrCR[data]
+
+    -- print(stringArrCR[data])
+    
+    singleRecipe = hfbp.splitString(ourString,">") -- read in the > sign
+    singleRecipe = hfbp.flattenStringArray(singleRecipe,",") --flatten so we can take in commas
+    singleRecipe = hfbp.splitString(singleRecipe,",") --read in commas if any
+    for item = 1, #singleRecipe do
+      singleRecipe[item] = hfbp.strip_whitespace(singleRecipe[item]) --remove whitespace
+    end
+    
+    singleRecipe[2] = hfbp.toLower(singleRecipe[2]) --easier to use "left" because r.set("Left") dont fuggin work
+    singleRecipe[3] = colorDict[singleRecipe[3]] --sets "White" to c.white, etc...
+    
+    
+    table.insert(parsedIngredients,singleRecipe)
+    
+  end
+  return parsedIngredients
+  
+end
+
+function write_ingredients_file(parsedFile, path)
+  hfbp.writeFile(path, textutils.serialize(parsedFile))
+end
+
+function read_ingredients_file(path)
+  return textutils.unserialize(hfbp.readFile(path))
+end
+
+
+-- write_ingredients_file(
+    -- parse_ingredients_file("/disk/data/ingredientsList.txt"),
+                           -- "/disk/data/ingredientsList.hfbp"
+-- )
+
+-- write_recipe_file(
+  -- parse_recipe_file("/disk/data/apothecaryrecipes.txt"),
+                    -- "/disk/data/apothecaryrecipes.hfbp"
+-- )

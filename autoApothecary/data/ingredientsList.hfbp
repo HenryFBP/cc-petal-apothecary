@@ -1,0 +1,187 @@
+{
+  {
+    "Mystical White Petal",
+    "left",
+    1,
+  },
+  {
+    "Mystical Orange Petal",
+    "left",
+    2,
+  },
+  {
+    "Mystical Magenta Petal",
+    "left",
+    4,
+  },
+  {
+    "Mystical Light Blue Petal",
+    "left",
+    8,
+  },
+  {
+    "Mystical Yellow Petal",
+    "left",
+    16,
+  },
+  {
+    "Mystical Lime Petal",
+    "left",
+    32,
+  },
+  {
+    "Mystical Pink Petal",
+    "left",
+    64,
+  },
+  {
+    "Mystical Gray Petal",
+    "left",
+    128,
+  },
+  {
+    "Mystical Light Gray Petal",
+    "left",
+    256,
+  },
+  {
+    "Mystical Cyan Petal",
+    "left",
+    512,
+  },
+  {
+    "Mystical Purple Petal",
+    "left",
+    1024,
+  },
+  {
+    "Mystical Blue Petal",
+    "left",
+    2048,
+  },
+  {
+    "Mystical Brown Petal",
+    "left",
+    4096,
+  },
+  {
+    "Mystical Green Petal",
+    "left",
+    8192,
+  },
+  {
+    "Mystical Red Petal",
+    "left",
+    16384,
+  },
+  {
+    "Mystical Black Petal",
+    "left",
+    32768,
+  },
+  {
+    "Rune of Water",
+    "top",
+    1,
+  },
+  {
+    "Rune of Fire",
+    "top",
+    2,
+  },
+  {
+    "Rune of Earth",
+    "top",
+    4,
+  },
+  {
+    "Rune of Air",
+    "top",
+    8,
+  },
+  {
+    "Rune of Spring",
+    "top",
+    16,
+  },
+  {
+    "Rune of Summer",
+    "top",
+    32,
+  },
+  {
+    "Rune of Autumn",
+    "top",
+    64,
+  },
+  {
+    "Rune of Winter",
+    "top",
+    128,
+  },
+  {
+    "Rune of Mana",
+    "top",
+    256,
+  },
+  {
+    "Rune of Lust",
+    "top",
+    512,
+  },
+  {
+    "Rune of Gluttony",
+    "top",
+    1024,
+  },
+  {
+    "Rune of Greed",
+    "top",
+    2048,
+  },
+  {
+    "Rune of Sloth",
+    "top",
+    4096,
+  },
+  {
+    "Rune of Wrath",
+    "top",
+    8192,
+  },
+  {
+    "Rune of Envy",
+    "top",
+    16384,
+  },
+  {
+    "Rune of Pride",
+    "top",
+    32768,
+  },
+  {
+    "Gaia Spirit",
+    "back",
+    1,
+  },
+  {
+    "Redstone Root",
+    "back",
+    2,
+  },
+  {
+    "Pixie Dust",
+    "back",
+    4,
+  },
+  {
+    "Mana Powder",
+    "back",
+    8,
+  },
+  {
+    "Seeds",
+    "back",
+    16,
+  },
+}

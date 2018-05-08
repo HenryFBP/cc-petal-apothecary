@@ -1,0 +1,39 @@
+Mystical White Petal > Left, White
+Mystical Orange Petal > Left, Orange
+Mystical Magenta Petal > Left, Magenta
+Mystical Light Blue Petal > Left, Light Blue
+Mystical Yellow Petal > Left, Yellow
+Mystical Lime Petal > Left, Lime
+Mystical Pink Petal > Left, Pink
+Mystical Gray Petal > Left, Gray
+Mystical Light Gray Petal > Left, Light Gray
+Mystical Cyan Petal > Left, Cyan 
+Mystical Purple Petal > Left, Purple
+Mystical Blue Petal > Left, Blue
+Mystical Brown Petal > Left, Brown
+Mystical Green Petal > Left, Green
+Mystical Red Petal > Left, Red
+Mystical Black Petal > Left, Black
+
+Rune of Water > Top, White
+Rune of Fire > Top, Orange
+Rune of Earth > Top, Magenta
+Rune of Air > Top, Light Blue
+Rune of Spring > Top, Yellow
+Rune of Summer > Top, Lime
+Rune of Autumn > Top, Pink
+Rune of Winter > Top, Gray
+Rune of Mana > Top, Light Gray
+Rune of Lust > Top, Cyan 
+Rune of Gluttony > Top, Purple
+Rune of Greed > Top, Blue
+Rune of Sloth > Top, Brown
+Rune of Wrath > Top, Green
+Rune of Envy > Top, Red
+Rune of Pride > Top, Black
+
+Gaia Spirit > Back, White
+Redstone Root > Back, Orange
+Pixie Dust > Back, Magenta
+Mana Powder > Back, Light Blue
+Seeds > Back, Yellow

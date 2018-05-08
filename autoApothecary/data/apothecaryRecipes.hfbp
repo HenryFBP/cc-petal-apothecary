@@ -1,0 +1,86 @@
+{
+  {
+    {
+      "Manastar",
+      1,
+    },
+    {
+      1,
+      "Mystical Light Blue Petal",
+    },
+    {
+      1,
+      "Mystical Cyan Petal",
+    },
+    {
+      1,
+      "Mystical Green Petal",
+    },
+    {
+      1,
+      "Mystical Red Petal",
+    },
+    {
+      1,
+      "Seeds",
+    },
+  },
+  {
+    {
+      "Pure Daisy",
+      1,
+    },
+    {
+      4,
+      "Mystical White Petal",
+    },
+    {
+      1,
+      "Seeds",
+    },
+  },
+  {
+    {
+      "Daybloom",
+      1,
+    },
+    {
+      1,
+      "Mystical Orange Petal",
+    },
+    {
+      1,
+      "Mystical Light Blue Petal",
+    },
+    {
+      2,
+      "Mystical Yellow Petal",
+    },
+    {
+      1,
+      "Seeds",
+    },
+  },
+  {
+    {
+      "Nightshade",
+      1,
+    },
+    {
+      1,
+      "Mystical Gray Petal",
+    },
+    {
+      1,
+      "Mystical Purple Petal",
+    },
+    {
+      2,
+      "Mystical Black Petal",
+    },
+    {
+      1,
+      "Seeds",
+    },
+  },
+}

@@ -1,0 +1,111 @@
+os.loadAPI("/disk/henryLib")
+os.loadAPI("/disk/parseApothecaryRecipes")
+
+local c = colors
+local r = redstone
+local hfbp = henryLib
+local parse = parseApothecaryRecipes
+
+local recipeFileRaw = "/disk/data/apothecaryRecipes.txt"
+local ingredientsFileRaw = "/disk/data/ingredientsList.txt"
+
+local recipeFileParsed = "/disk/data/apothecaryRecipes.hfbp"
+local ingredientsFileParsed = "/disk/data/ingredientsList.hfbp"
+
+
+print("> Shall I regenerate the parsed recipe files and ingredient files?")
+
+local input = read()
+if hfbp.toUpper(input) == "Y" or hfbp.toUpper(input) == "YES" then
+  print("> Regenerating the parsed recipe/input files...")
+  
+  parse.write_recipe_file(
+    parse.parse_recipe_file(recipeFileRaw),
+                            recipeFileParsed
+  )
+  
+  parse.write_ingredients_file(
+    parse.parse_ingredients_file(ingredientsFileRaw),
+                                 ingredientsFileParsed
+  )
+else
+  print("> Not regenerating parsed recipe/input files.\n")
+end
+
+function make_pure_daisy()
+
+
+  hfbp.pulseBundledOutput("left",c.white,4,0.5,0.5)
+  hfbp.resetBundledOutput()
+
+end
+
+
+--here we generate a dictionary of all ingredients mapped to their {side,color}...
+
+
+
+
+local recipeList = parse.read_recipe_file(recipeFileParsed) --to set recipelist
+local ingredientsList = parse.read_ingredients_file(ingredientsFileParsed) --to set ingredientslist
+local done = false
+
+local ingredientDict = {}
+
+for item = 1, #ingredientsList do
+  ingredientDict[ingredientsList[item][1]] = {ingredientsList[item][2],ingredientsList[item][3]} --ingredDict["Mys Whi Pet"] = {"left",c.white}
+end
+
+  function make_recipe(result,recipes,ingredients,times)
+    for howmany = 1, times do --we can do it multiple times
+    
+      local found = false
+      print("Searching recipe database for '"..result.."'...\n")
+      for item = 1, #recipes do
+        if recipes[item][1][1] == result then
+          found = true
+          print("Recipe for "..result.." found!\n\n")
+            
+          local ourRecipe = hfbp.slice(recipes[item],2) --slices off "result" part of our recipe, unneeded...
+            
+          for ingredient = 1, #ourRecipe do --loop through ingredients
+            print("...Attempting to resolve ingredient \n   '"..ourRecipe[ingredient][2].."'")
+            local currIngred = ourRecipe[ingredient][2]
+            local numIngred = ourRecipe[ingredient][1]
+              
+            for times = 1, numIngred do --loop through number of shit needed
+              print("Pooping out 1x "..currIngred)
+               
+              hfbp.pulseBundledOutput(
+                  ingredientDict[currIngred][1],
+                  ingredientDict[currIngred][2],
+                  1,
+                  0.15,
+                  0.15
+                  )
+            end
+          end
+        end
+      end
+        
+      if not found then print("Recipe for '"..result.."' not found :\(\n\n") end
+      sleep(3)
+    end
+  end
+
+while not done do 
+  print("What shall we make today?\n Please enter [A-Z;a-z;0-9], with capitalization.")
+  print("Enter 'nothing' to tell me to fuck off.")
+
+  local inputRecipe = read()
+  if inputRecipe == "nothing" then
+    done = true
+    print("ok bye PBLLLLT")
+  else
+    print("Please enter how many from 1 to forever:")
+    local inputNum = read()
+    make_recipe(inputRecipe,recipeList,ingredientsList,tonumber(inputNum))
+  end
+end
+
+-- make_pure_daisy()
